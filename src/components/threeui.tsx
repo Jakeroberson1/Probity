@@ -1,21 +1,59 @@
-// ThreeUI components, configured for the Probity brand.
+// ThreeUI components, configured for the Probity brand (light theme, navy accents).
 import { useEffect, useRef } from 'react'
 import { ConstellationField } from '@designcodeio/threeui/components/ConstellationField'
+import { PredictiveArcCanvas } from '@designcodeio/threeui/components/PredictiveArcCanvas'
 import { RectangleButtons } from '@designcodeio/threeui/components/RectangleButtons'
 import { StructureFlowCollection } from '@designcodeio/threeui/components/StructureFlowCollection'
 import { TextAnimationCollection } from '@designcodeio/threeui/components/TextAnimationCollection'
 import { useInView } from '@/hooks/use-in-view'
 import { followHref } from '@/lib/scroll'
 
-/** Slow-rotating point field behind the hero. */
+/** Fixed particle arc behind every page. Its indigo dots are hue-shifted to navy. */
+export function SiteBackground() {
+  return (
+    <div className="site-bg" aria-hidden="true">
+      <PredictiveArcCanvas
+        variant="predictive"
+        mode="light"
+        speed={0.6}
+        spacing={8}
+        dotSize={5}
+        archHeight={0.6}
+        thickness={1.1}
+        brightness={1}
+        hue={-40}
+        saturation={1.2}
+      />
+    </div>
+  )
+}
+
+/**
+ * SVG filter that recolors canvas effects for the light theme: keeps each pixel's
+ * alpha and paints it navy, so white particles show up on a light background.
+ * (Iframe-based effects ignore SVG filters, so they use their own hue props instead.)
+ */
+export function InkFilters() {
+  return (
+    <svg className="ink-filters" aria-hidden="true" focusable="false">
+      <defs>
+        <filter id="probity-ink-alpha" colorInterpolationFilters="sRGB">
+          <feColorMatrix type="matrix" values="0 0 0 0 0.071  0 0 0 0 0.161  0 0 0 0 0.302  0 0 0 1 0" />
+        </filter>
+      </defs>
+    </svg>
+  )
+}
+
+/** Slow-rotating point field behind the hero, inked navy. */
 export function HeroField() {
   return (
     <div className="hero__flow" aria-hidden="true">
       <StructureFlowCollection
         variant="structure-flow"
         speed={0.55}
-        pointSize={0.07}
-        opacity={0.42}
+        pointSize={0.1}
+        opacity={0.7}
         maskStart={0.12}
         maskSolid={0.62}
       />
@@ -23,7 +61,7 @@ export function HeroField() {
   )
 }
 
-/** Constellation network, hue-shifted from gold toward the brand blue. */
+/** Constellation network in light mode, its gold lines hue-shifted to blue. */
 export function ConstellationBackdrop({ className }: { className?: string }) {
   const ref = useRef<HTMLDivElement>(null)
 
@@ -48,12 +86,12 @@ export function ConstellationBackdrop({ className }: { className?: string }) {
     <div ref={ref} className={['constellation', className].filter(Boolean).join(' ')} aria-hidden="true">
       <ConstellationField
         variant="constellation-field"
-        mode="dark"
+        mode="light"
         speed={0.45}
         density={0.7}
         size={0.7}
         hue={172}
-        saturation={0.9}
+        saturation={1.4}
       />
     </div>
   )
@@ -71,7 +109,7 @@ export function CtaButton({ label, href, variant = 'primary' }: CtaButtonProps) 
     <span className="cta-slot">
       <RectangleButtons
         variant={variant === 'ghost' ? 'lumen-cta-ghost' : 'lumen-cta'}
-        mode="dark"
+        mode="light"
         label={label}
         className={`probity-cta probity-cta--${variant}`}
         onClick={() => followHref(href)}
@@ -96,7 +134,7 @@ export function BriefAnatomy() {
       {inView && (
         <TextAnimationCollection
           variant="article-headings"
-          mode="dark"
+          mode="light"
           header={['BRIEF ANATOMY', '05 SECTIONS']}
           entries={ANATOMY}
           duration={720}
