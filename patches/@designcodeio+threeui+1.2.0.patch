@@ -1,0 +1,80 @@
+diff --git a/node_modules/@designcodeio/threeui/lib-dist/shaders/article-headings/ArticleHeadings.d.ts b/node_modules/@designcodeio/threeui/lib-dist/shaders/article-headings/ArticleHeadings.d.ts
+index 77b3fec..8b3de80 100644
+--- a/node_modules/@designcodeio/threeui/lib-dist/shaders/article-headings/ArticleHeadings.d.ts
++++ b/node_modules/@designcodeio/threeui/lib-dist/shaders/article-headings/ArticleHeadings.d.ts
+@@ -1,3 +1,8 @@
++export type ArticleHeadingEntry = {
++    index: string;
++    title: string;
++    meta?: string;
++};
+ export type ArticleHeadingsProps = {
+     mode?: "dark" | "light";
+     duration?: number;
+@@ -5,6 +10,10 @@ export type ArticleHeadingsProps = {
+     scrambleLength?: number;
+     preserveChance?: number;
+     tailChance?: number;
++    /** Left and right header labels. */
++    header?: readonly [string, string];
++    /** Headings to render and decode. */
++    entries?: readonly ArticleHeadingEntry[];
+     className?: string;
+ };
+ export declare const ARTICLE_HEADINGS_DEFAULTS: {
+diff --git a/node_modules/@designcodeio/threeui/lib-dist/shaders/article-headings/ArticleHeadings.js b/node_modules/@designcodeio/threeui/lib-dist/shaders/article-headings/ArticleHeadings.js
+index 75dd92e..2c3a135 100644
+--- a/node_modules/@designcodeio/threeui/lib-dist/shaders/article-headings/ArticleHeadings.js
++++ b/node_modules/@designcodeio/threeui/lib-dist/shaders/article-headings/ArticleHeadings.js
+@@ -8,14 +8,17 @@ const s = {
+   scrambleLength: 10,
+   preserveChance: 0.3,
+   tailChance: 0.18
+-};
+-function u({ mode: o = s.mode, className: t = "", ...d }) {
+-  const r = l(null), i = o === "light" ? "light" : "dark", n = { ...s, ...d };
++}, p = ["FIELD NOTES", "02 ENTRIES"], g = [
++  { index: "01", title: "Context Is Infrastructure, Not a Prompt", meta: "SYSTEMS NOTE · 8 MIN" },
++  { index: "02", title: "The Last Mile Is Verification", meta: "FIELD GUIDE · 11 MIN" }
++];
++function u({ mode: o = s.mode, className: t = "", header: c = p, entries: y = g, ...d }) {
++  const r = l(null), i = o === "light" ? "light" : "dark", n = { ...s, ...d }, k = y.map((x) => x.title).join("|");
+   return h(() => {
+-    const c = r.current;
+-    if (c)
+-      return m(c, n);
+-  }, [n.duration, n.preserveChance, n.scrambleLength, n.stagger, n.tailChance]), /* @__PURE__ */ a(
++    const f = r.current;
++    if (f)
++      return m(f, n);
++  }, [n.duration, n.preserveChance, n.scrambleLength, n.stagger, n.tailChance, k]), /* @__PURE__ */ a(
+     "div",
+     {
+       ref: r,
+@@ -23,19 +26,14 @@ function u({ mode: o = s.mode, className: t = "", ...d }) {
+       "data-mode": i,
+       children: [
+         /* @__PURE__ */ a("div", { className: "article-headings-component__header", children: [
+-          /* @__PURE__ */ e("span", { children: "FIELD NOTES" }),
+-          /* @__PURE__ */ e("span", { children: "02 ENTRIES" })
+-        ] }),
+-        /* @__PURE__ */ a("article", { className: "article-headings-component__entry", children: [
+-          /* @__PURE__ */ e("span", { className: "article-headings-component__index", children: "01" }),
+-          /* @__PURE__ */ e("h2", { "data-article-heading": !0, children: "Context Is Infrastructure, Not a Prompt" }),
+-          /* @__PURE__ */ e("span", { className: "article-headings-component__meta", children: "SYSTEMS NOTE · 8 MIN" })
++          /* @__PURE__ */ e("span", { children: c[0] }),
++          /* @__PURE__ */ e("span", { children: c[1] })
+         ] }),
+-        /* @__PURE__ */ a("article", { className: "article-headings-component__entry", children: [
+-          /* @__PURE__ */ e("span", { className: "article-headings-component__index", children: "02" }),
+-          /* @__PURE__ */ e("h2", { "data-article-heading": !0, children: "The Last Mile Is Verification" }),
+-          /* @__PURE__ */ e("span", { className: "article-headings-component__meta", children: "FIELD GUIDE · 11 MIN" })
+-        ] })
++        ...y.map((x, j) => /* @__PURE__ */ a("article", { className: "article-headings-component__entry", children: [
++          /* @__PURE__ */ e("span", { className: "article-headings-component__index", children: x.index }),
++          /* @__PURE__ */ e("h2", { "data-article-heading": !0, children: x.title }),
++          x.meta ? /* @__PURE__ */ e("span", { className: "article-headings-component__meta", children: x.meta }) : null
++        ] }, j))
+       ]
+     }
+   );
