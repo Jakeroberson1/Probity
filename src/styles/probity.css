@@ -14,6 +14,7 @@
   --line-strong: rgba(10, 22, 40, 0.14);
   --panel: rgba(255, 255, 255, 0.74);
   --panel-strong: rgba(255, 255, 255, 0.88);
+  --card-outline: rgba(30, 79, 163, 0.45);
 
   --font-brand: "Inter Variable", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --container: 1140px;
@@ -364,7 +365,7 @@ section[id] { scroll-margin-top: var(--nav-h); }
   background: var(--panel);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
-  border: 1px solid var(--line);
+  border: 1px solid var(--card-outline);
   border-radius: var(--card-radius);
   box-shadow: var(--shadow-soft);
 }
@@ -455,7 +456,7 @@ section[id] { scroll-margin-top: var(--nav-h); }
   background: #FFFFFF;
   color: var(--text);
   border-radius: 6px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--card-outline);
   box-shadow: 0 30px 60px -24px rgba(10, 22, 40, 0.25);
   font-size: 14px;
   line-height: 1.5;
@@ -522,7 +523,7 @@ section[id] { scroll-margin-top: var(--nav-h); }
   background: var(--panel);
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
-  border: 1px solid var(--line);
+  border: 1px solid var(--card-outline);
   box-shadow: var(--shadow-soft);
 }
 /* ThreeUI: ConstellationField, light mode hue-shifted to blue */
@@ -546,7 +547,7 @@ section[id] { scroll-margin-top: var(--nav-h); }
 .terms {
   margin: 0;
   background: var(--panel-strong);
-  border: 1px solid var(--line);
+  border: 1px solid var(--card-outline);
   border-radius: var(--card-radius);
   padding: 8px 28px;
 }
