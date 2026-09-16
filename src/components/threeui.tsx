@@ -1,5 +1,5 @@
 // ThreeUI components, configured for the Probity brand (light theme, navy accents).
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { ConstellationField } from '@designcodeio/threeui/components/ConstellationField'
 import { PredictiveArcCanvas } from '@designcodeio/threeui/components/PredictiveArcCanvas'
 import { RectangleButtons } from '@designcodeio/threeui/components/RectangleButtons'
@@ -8,21 +8,41 @@ import { TextAnimationCollection } from '@designcodeio/threeui/components/TextAn
 import { useInView } from '@/hooks/use-in-view'
 import { followHref } from '@/lib/scroll'
 
-/** Fixed particle arc behind every page. Its indigo dots are hue-shifted to navy. */
+/**
+ * Fixed field of drifting signal particles behind every page, spread evenly
+ * across the viewport. It stays quietest while the hero is on screen and comes
+ * up slightly once the visitor scrolls past it; pages without a hero always get
+ * the stronger field.
+ */
 export function SiteBackground() {
+  const [pastHero, setPastHero] = useState(false)
+
+  useEffect(() => {
+    const hero = document.querySelector('.hero')
+    if (!hero) {
+      setPastHero(true)
+      return
+    }
+    const observer = new IntersectionObserver(([entry]) => setPastHero(entry.intersectionRatio < 0.4), {
+      threshold: [0, 0.2, 0.4, 0.6, 1],
+    })
+    observer.observe(hero)
+    return () => observer.disconnect()
+  }, [])
+
   return (
-    <div className="site-bg" aria-hidden="true">
+    <div className={pastHero ? 'site-bg site-bg--strong' : 'site-bg'} aria-hidden="true">
       <PredictiveArcCanvas
-        variant="predictive"
+        variant="signal-particles"
         mode="light"
-        speed={0.6}
-        spacing={8}
-        dotSize={5}
-        archHeight={0.6}
-        thickness={1.1}
-        brightness={1}
-        hue={-40}
-        saturation={1.2}
+        speed={0.55}
+        size={0.85}
+        length={0.8}
+        density={0.9}
+        opacity={1}
+        hue={-25}
+        saturation={0.9}
+        brightness={1.06}
       />
     </div>
   )
@@ -92,6 +112,7 @@ export function ConstellationBackdrop({ className }: { className?: string }) {
         size={0.7}
         hue={172}
         saturation={1.4}
+        brightness={1.08}
       />
     </div>
   )

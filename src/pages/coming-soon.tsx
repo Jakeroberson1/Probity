@@ -1,5 +1,6 @@
 import { Layout } from '@/components/layout'
 import { Reveal } from '@/components/reveal'
+import { Accent, ArrowLink } from '@/components/section'
 import { ConstellationBackdrop, CtaButton } from '@/components/threeui'
 import { COMING_SOON_PAGES, EMAIL, PILOT_MAILTO } from '@/lib/site'
 
@@ -13,14 +14,14 @@ export function ComingSoonPage() {
 
   return (
     <Layout>
-      <section className="hero page-hero page-hero--soon" aria-labelledby="soon-title">
+      <section className="hero page-hero" aria-labelledby="soon-title">
         <ConstellationBackdrop className="page-hero__field" />
-        <div className="container hero__inner page-hero__inner">
-          <Reveal as="p" className="eyebrow eyebrow--dark">
+        <div className="container hero__inner">
+          <Reveal as="p" className="badge">
             Coming soon
           </Reveal>
-          <Reveal as="h1" className="page-hero__title" id="soon-title">
-            {label} isn't published yet<span className="accent">.</span>
+          <Reveal as="h1" className="hero__title page-hero__title" id="soon-title">
+            {label} <Accent>isn't published yet.</Accent>
           </Reveal>
           <Reveal as="p" className="hero__sub">
             We would rather publish it right than publish it early. Until then, reach us at{' '}
@@ -31,7 +32,7 @@ export function ComingSoonPage() {
           </Reveal>
           <Reveal className="hero__actions">
             <CtaButton label="Request a pilot brief" href={PILOT_MAILTO} />
-            <CtaButton label="Back to home" href="/" variant="ghost" />
+            <ArrowLink href="/">Back to home</ArrowLink>
           </Reveal>
         </div>
       </section>

@@ -36,7 +36,7 @@ export function Nav() {
 
   return (
     <header className={['nav', open && 'is-open', scrolled && 'is-scrolled'].filter(Boolean).join(' ')}>
-      <div className="container nav__inner">
+      <div className="nav__bar">
         <a className="logo" href="/" aria-label="Probity home">
           PROBITY<span className="logo__dot">.</span>
         </a>

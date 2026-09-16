@@ -1,5 +1,6 @@
 import { Layout } from '@/components/layout'
 import { Reveal } from '@/components/reveal'
+import { Accent, ArrowLink } from '@/components/section'
 import { CtaButton, HeroField } from '@/components/threeui'
 import { PILOT_MAILTO } from '@/lib/site'
 
@@ -8,12 +9,12 @@ export function AboutPage() {
     <Layout>
       <section className="hero page-hero" aria-labelledby="about-title">
         <HeroField />
-        <div className="container hero__inner page-hero__inner">
-          <Reveal as="p" className="eyebrow eyebrow--dark">
+        <div className="container hero__inner">
+          <Reveal as="p" className="badge">
             About
           </Reveal>
-          <Reveal as="h1" className="page-hero__title" id="about-title">
-            Diligence you can check<span className="accent">.</span>
+          <Reveal as="h1" className="hero__title page-hero__title" id="about-title">
+            Diligence <Accent>you can check.</Accent>
           </Reveal>
           <Reveal as="p" className="hero__sub">
             Probity builds evidence-backed diligence briefs on biotech assets for BD teams, biotech investors, and
@@ -22,7 +23,7 @@ export function AboutPage() {
           </Reveal>
           <Reveal className="hero__actions">
             <CtaButton label="Request a pilot brief" href={PILOT_MAILTO} />
-            <CtaButton label="How it works" href="/#how-it-works" variant="ghost" />
+            <ArrowLink href="/#how-it-works">How it works</ArrowLink>
           </Reveal>
         </div>
       </section>
