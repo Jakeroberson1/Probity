@@ -2,7 +2,7 @@ import { useEffect, type CSSProperties } from 'react'
 import { Layout } from '@/components/layout'
 import { Reveal } from '@/components/reveal'
 import { Accent, ArrowLink, SectionIntro } from '@/components/section'
-import { BriefAnatomy, ConstellationBackdrop, CtaButton, HeroField } from '@/components/threeui'
+import { BriefAnatomy, ConstellationBackdrop, CtaButton } from '@/components/threeui'
 import { scrollToId } from '@/lib/scroll'
 import { EMAIL, PILOT_MAILTO, comingSoon } from '@/lib/site'
 
@@ -80,7 +80,6 @@ const STATS = [
 function Hero() {
   return (
     <section className="hero" aria-labelledby="hero-title">
-      <HeroField />
       <div className="container hero__inner">
         <Reveal as="p" className="badge">
           Evidence-backed diligence for biotech deals

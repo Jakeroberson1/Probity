@@ -3,7 +3,6 @@ import { useEffect, useRef, useState } from 'react'
 import { ConstellationField } from '@designcodeio/threeui/components/ConstellationField'
 import { PredictiveArcCanvas } from '@designcodeio/threeui/components/PredictiveArcCanvas'
 import { RectangleButtons } from '@designcodeio/threeui/components/RectangleButtons'
-import { StructureFlowCollection } from '@designcodeio/threeui/components/StructureFlowCollection'
 import { TextAnimationCollection } from '@designcodeio/threeui/components/TextAnimationCollection'
 import { useInView } from '@/hooks/use-in-view'
 import { followHref } from '@/lib/scroll'
@@ -43,39 +42,6 @@ export function SiteBackground() {
         hue={-25}
         saturation={0.9}
         brightness={1.06}
-      />
-    </div>
-  )
-}
-
-/**
- * SVG filter that recolors canvas effects for the light theme: keeps each pixel's
- * alpha and paints it navy, so white particles show up on a light background.
- * (Iframe-based effects ignore SVG filters, so they use their own hue props instead.)
- */
-export function InkFilters() {
-  return (
-    <svg className="ink-filters" aria-hidden="true" focusable="false">
-      <defs>
-        <filter id="probity-ink-alpha" colorInterpolationFilters="sRGB">
-          <feColorMatrix type="matrix" values="0 0 0 0 0.071  0 0 0 0 0.161  0 0 0 0 0.302  0 0 0 1 0" />
-        </filter>
-      </defs>
-    </svg>
-  )
-}
-
-/** Slow-rotating point field behind the hero, inked navy. */
-export function HeroField() {
-  return (
-    <div className="hero__flow" aria-hidden="true">
-      <StructureFlowCollection
-        variant="structure-flow"
-        speed={0.55}
-        pointSize={0.1}
-        opacity={0.7}
-        maskStart={0.12}
-        maskSolid={0.62}
       />
     </div>
   )

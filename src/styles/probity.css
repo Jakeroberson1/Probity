@@ -100,8 +100,6 @@ section[id] { scroll-margin-top: var(--nav-h); }
   background: transparent;
 }
 
-.ink-filters { position: absolute; width: 0; height: 0; overflow: hidden; }
-
 @keyframes field-in { from { opacity: 0; } }
 
 /* ---------- Type primitives ---------- */
@@ -382,19 +380,6 @@ section[id] { scroll-margin-top: var(--nav-h); }
   gap: 16px 28px;
 }
 
-/* ThreeUI: StructureFlowCollection, inked navy. Same placement and motion as
-   the sphere on probity.bio, sitting just above the background particles. */
-.hero__flow {
-  position: absolute;
-  inset: 0 -10% -20% 30%;
-  z-index: -1;
-  pointer-events: none;
-  opacity: 0.4;
-  filter: url(#probity-ink-alpha);
-  animation: field-in 1.6s var(--ease) both;
-}
-.hero__flow .threeui-background { position: absolute; inset: 0; background: transparent; }
-
 .stats {
   width: 100%;
   max-width: 800px;
@@ -662,7 +647,6 @@ section[id] { scroll-margin-top: var(--nav-h); }
   .cards, .steps { grid-template-columns: 1fr; }
   .steps { gap: 36px; }
   .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .hero__flow { inset: 55% -60% -20% -60%; }
   .card { padding: 26px; }
   .anatomy-stage { height: 350px; }
   .probity-anatomy .article-headings-component__entry { grid-template-columns: minmax(0, 1fr); }

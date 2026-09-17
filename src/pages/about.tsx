@@ -1,14 +1,13 @@
 import { Layout } from '@/components/layout'
 import { Reveal } from '@/components/reveal'
 import { Accent, ArrowLink } from '@/components/section'
-import { CtaButton, HeroField } from '@/components/threeui'
+import { CtaButton } from '@/components/threeui'
 import { PILOT_MAILTO } from '@/lib/site'
 
 export function AboutPage() {
   return (
     <Layout>
       <section className="hero page-hero" aria-labelledby="about-title">
-        <HeroField />
         <div className="container hero__inner">
           <Reveal as="p" className="badge">
             About
