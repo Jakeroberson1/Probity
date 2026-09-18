@@ -66,7 +66,8 @@ anyway, for anything else that reads the file.
 The next-call box on the home page reads `data/catalyst-calendar.json`:
 
 1. If `next_featured` is set and its day hasn't ended, it shows that event with that label.
-2. Otherwise it shows the earliest event with `"covered": true` and a confirmed `date`.
+2. Otherwise it shows the earliest event with `"covered": true` and a confirmed `date`,
+   skipping any `probity scan` has marked `"cancelled": true`.
    Events known only by a `window` ("Q4 2026") never drive the countdown.
 
 Days run on US Eastern time, since FDA dates are Eastern. The countdown runs to midnight at the

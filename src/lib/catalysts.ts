@@ -16,6 +16,8 @@ export type Catalyst = {
   note?: string
   ticker: string | null
   unconfirmed?: boolean
+  /** Set by `probity scan` when FDA cancels or postpones the meeting. */
+  cancelled?: boolean
 }
 
 type Calendar = {
@@ -68,12 +70,14 @@ function toNextCall(date: string, label: string, briefName: string): NextCall {
  */
 export function nextCall(now: number = Date.now()): NextCall | null {
   const upcoming = CALENDAR.events
-    .filter((e): e is Catalyst & { date: string } => e.covered && e.date !== null)
+    .filter((e): e is Catalyst & { date: string } => e.covered && !e.cancelled && e.date !== null)
     .filter((e) => startOfDayET(e.date) + DAY_MS > now)
     .sort((a, b) => a.date.localeCompare(b.date))
 
+  // A featured event that has since been cancelled gives way to the next real one.
   const featured = CALENDAR.next_featured
-  if (featured && startOfDayET(featured.date) + DAY_MS > now) {
+  const featuredCancelled = CALENDAR.events.some((e) => e.date === featured?.date && e.cancelled)
+  if (featured && !featuredCancelled && startOfDayET(featured.date) + DAY_MS > now) {
     const match = upcoming.find((e) => e.date === featured.date)
     return toNextCall(featured.date, featured.label, match ? shortCompany(match.company) : featured.label)
   }
