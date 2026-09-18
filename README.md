@@ -18,7 +18,7 @@ Pushing to `main` deploys to probity.bio through Vercel's GitHub integration.
 | URL | Source | Reads |
 | --- | --- | --- |
 | `/` | `src/pages/home.tsx` | `data/catalyst-calendar.json` (next call, countdown), `data/track-record.json` (scoreboard strip) |
-| `/method/` | `src/pages/method.tsx` | `content/method-v1.0.md` |
+| `/method/` | `src/pages/method.tsx` | One paragraph, written in the page itself |
 | `/track-record/` | `src/pages/track-record.tsx` | `data/track-record.json` |
 | `/briefs/` | `src/pages/briefs.tsx` | `content/briefs/*.md` |
 | `/coming-soon/?page=…` | `src/pages/coming-soon.tsx` | Placeholder for Privacy, Terms and LinkedIn |

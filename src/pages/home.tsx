@@ -80,7 +80,7 @@ function Hero() {
         </Reveal>
         <Reveal as="p" className="hero__sub">
           Probity scores every FDA advisory vote, drug approval decision, and trial readout. Each call is published
-          before it happens and graded after. The briefs are free, and the track record and method are public.
+          before it happens and graded after. The briefs are free, and the track record is public.
         </Reveal>
         <Reveal className="panel call-card" id="subscribe">
           <NextCallPanel />
