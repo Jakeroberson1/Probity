@@ -1,0 +1,229 @@
+{
+  "events": [
+    {
+      "committee": "Molecular and Clinical Genetics Panel (CDRH)",
+      "company": "GRAIL, Inc.",
+      "covered": true,
+      "date": "2026-09-23",
+      "note": "First-ever PMA vote on a multi-cancer screening blood test; binary for GRAL; gateway to Medicare coverage",
+      "product": "Galleri MCED blood test (PMA)",
+      "ticker": "GRAL",
+      "type": "adcom"
+    },
+    {
+      "committee": "Vaccines and Related Biological Products Advisory Committee (VRBPAC)",
+      "company": "\u2014",
+      "covered": false,
+      "date": "2026-10-01",
+      "note": "Strain selection; no company-specific impact",
+      "product": "2027 Southern Hemisphere influenza virus vaccines",
+      "ticker": null,
+      "type": "adcom"
+    },
+    {
+      "committee": "Microbiology Devices Panel (CDRH)",
+      "company": "\u2014",
+      "covered": false,
+      "date": "2026-11-19",
+      "note": "Policy discussion, no product vote",
+      "product": "Pathogen-agnostic sequencing tests",
+      "ticker": null,
+      "type": "adcom"
+    },
+    {
+      "company": "Roche / Genentech",
+      "covered": true,
+      "date": "2026-10-09",
+      "indication": "Adjuvant stage III dMMR/MSI-H colon cancer",
+      "note": "ATOMIC Phase 3: 50% reduction in recurrence/death; Priority Review sBLA",
+      "product": "Atezolizumab (Tecentriq) + chemo, sBLA",
+      "ticker": null,
+      "type": "pdufa"
+    },
+    {
+      "company": "Daiichi Sankyo / Merck",
+      "covered": true,
+      "date": "2026-10-10",
+      "indication": "Pretreated extensive-stage small cell lung cancer",
+      "note": "Potential first-in-class B7-H3-directed ADC; ORR 48% Phase 2; Priority Review BLA",
+      "product": "Ifinatamab deruxtecan (I-DXd), BLA",
+      "ticker": null,
+      "type": "pdufa"
+    },
+    {
+      "company": "Genentech (Roche)",
+      "covered": true,
+      "date": "2026-10-15",
+      "indication": "Thyroid eye disease",
+      "note": "At-home subcutaneous option vs Tepezza infusion monopoly; sBLA",
+      "product": "Satralizumab (Enspryng), sBLA",
+      "ticker": null,
+      "type": "pdufa"
+    },
+    {
+      "company": "Viatris / Opus Genetics",
+      "covered": true,
+      "date": "2026-10-17",
+      "indication": "Presbyopia",
+      "note": "Pupil-modulation mechanism; crowded drops market",
+      "product": "MR-141 (phentolamine ophthalmic 0.75%), sNDA",
+      "ticker": null,
+      "type": "pdufa"
+    },
+    {
+      "company": "GSK / Ionis",
+      "covered": true,
+      "date": "2026-10-26",
+      "indication": "Chronic hepatitis B",
+      "note": "Would be first antisense oligo for chronic HBV; Priority Review NDA",
+      "product": "Bepirovirsen, NDA",
+      "ticker": null,
+      "type": "pdufa"
+    },
+    {
+      "company": "Inovio",
+      "covered": true,
+      "date": "2026-10-30",
+      "indication": "Recurrent respiratory papillomatosis",
+      "note": "Lead-asset binary; first commercial product if approved; Accelerated Approval BLA",
+      "product": "INO-3107, BLA",
+      "ticker": "INO",
+      "type": "pdufa"
+    },
+    {
+      "company": "Agios",
+      "covered": true,
+      "date": "2026-11-01",
+      "indication": "Sickle cell disease",
+      "note": "RISE UP missed primary pain endpoint but FDA granted Priority Review on anti-hemolytic data",
+      "product": "Mitapivat (Pyrukynd), sNDA",
+      "ticker": "AGIO",
+      "type": "pdufa"
+    },
+    {
+      "company": "Capricor",
+      "covered": true,
+      "date": "2026-11-22",
+      "indication": "Duchenne muscular dystrophy (upper-limb function)",
+      "note": "Highly binary small-cap; July AdCom voted against; class action pending",
+      "product": "Deramiocel, BLA",
+      "ticker": "CAPR",
+      "type": "pdufa"
+    },
+    {
+      "company": "Cogent",
+      "covered": true,
+      "date": "2026-11-30",
+      "indication": "Imatinib-pretreated GIST",
+      "note": "First statistically significant win vs active comparator in GIST (HR 0.50); Priority Review NDA",
+      "product": "Bezuclastinib + sunitinib, NDA",
+      "ticker": "COGT",
+      "type": "pdufa"
+    },
+    {
+      "company": "Regeneron",
+      "covered": true,
+      "date": null,
+      "indication": "Generalized myasthenia gravis (AChR+)",
+      "note": "Would be first siRNA for gMG; Priority Review via PRV",
+      "product": "Cemdisiran, NDA",
+      "ticker": "REGN",
+      "type": "pdufa",
+      "window": "November 2026"
+    },
+    {
+      "company": "Pfizer",
+      "covered": true,
+      "date": null,
+      "indication": "HRR-mutated metastatic castration-sensitive prostate cancer",
+      "note": "TALAPRO-3: 52% rPFS risk reduction; Priority Review sNDA",
+      "product": "Talzenna + Xtandi, sNDA",
+      "ticker": "PFE",
+      "type": "pdufa",
+      "window": "Q4 2026"
+    },
+    {
+      "company": "Roche / Genentech",
+      "covered": true,
+      "date": null,
+      "indication": "Systemic lupus erythematosus",
+      "note": "ALLEGORY Phase 3 hit SRI-4; date from secondary tracker",
+      "product": "Gazyva (obinutuzumab), sBLA",
+      "ticker": null,
+      "type": "pdufa",
+      "unconfirmed": true,
+      "window": "December 2026"
+    },
+    {
+      "company": "Kodiak Sciences",
+      "covered": true,
+      "date": null,
+      "indication": "Treatment-naive wet AMD",
+      "note": "Two-for-one binary vs aflibercept; pre-revenue, cash into 2027",
+      "product": "DAYBREAK Phase 3: Zenkuda + KSI-501",
+      "ticker": "KOD",
+      "type": "readout",
+      "window": "September 2026"
+    },
+    {
+      "company": "Invivyd",
+      "covered": true,
+      "date": null,
+      "indication": "COVID-19 pre-exposure prophylaxis",
+      "note": "VYD2311 vs placebo; BLA-enabling; penny-stock binary",
+      "product": "DECLARATION Phase 3",
+      "ticker": "IVVD",
+      "type": "readout",
+      "window": "Late Q3 2026"
+    },
+    {
+      "company": "Spyre Therapeutics",
+      "covered": true,
+      "date": null,
+      "indication": "Psoriatic arthritis, axial spondyloarthritis",
+      "note": "TL1A read-through from IBD into rheumatology",
+      "product": "SKYWAY Phase 2: SPY072 (anti-TL1A)",
+      "ticker": "SYRE",
+      "type": "readout",
+      "window": "Q4 2026"
+    },
+    {
+      "company": "Inventiva",
+      "covered": true,
+      "date": null,
+      "indication": "MASH",
+      "note": "Lead oral pan-PPAR asset; positive readout triggers filings",
+      "product": "NATiV3 Phase 3: lanifibranor",
+      "ticker": "IVA",
+      "type": "readout",
+      "window": "Q4 2026"
+    },
+    {
+      "company": "Exelixis",
+      "covered": true,
+      "date": null,
+      "indication": "Previously untreated non-clear cell RCC",
+      "note": "Zanzalintinib expansion test beyond mCRC; PFS/ORR endpoints",
+      "product": "STELLAR-304 Phase 3: zanzalintinib + nivolumab",
+      "ticker": "EXEL",
+      "type": "readout",
+      "window": "H2 2026"
+    },
+    {
+      "company": "Kodiak Sciences",
+      "covered": true,
+      "date": null,
+      "indication": "Macular edema secondary to inflammation",
+      "note": "First bispecific-protein data in inflammatory eye disease",
+      "product": "PEAK Phase 3 Pivotal Analysis 1: KSI-101",
+      "ticker": "KOD",
+      "type": "readout",
+      "window": "December 2026"
+    }
+  ],
+  "next_featured": {
+    "date": "2026-09-23",
+    "label": "GRAIL Galleri FDA panel vote"
+  },
+  "updated": "2026-09-17"
+}

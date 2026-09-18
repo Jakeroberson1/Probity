@@ -2,7 +2,7 @@ import { Layout } from '@/components/layout'
 import { Reveal } from '@/components/reveal'
 import { Accent, ArrowLink } from '@/components/section'
 import { ConstellationBackdrop, CtaButton } from '@/components/threeui'
-import { COMING_SOON_PAGES, EMAIL, PILOT_MAILTO } from '@/lib/site'
+import { COMING_SOON_PAGES, EMAIL, SUBSCRIBE_HREF } from '@/lib/site'
 
 function pageLabel() {
   const key = new URLSearchParams(window.location.search).get('page')
@@ -31,7 +31,7 @@ export function ComingSoonPage() {
             .
           </Reveal>
           <Reveal className="hero__actions">
-            <CtaButton label="Request a pilot brief" href={PILOT_MAILTO} />
+            <CtaButton label="Send me the briefs" href={SUBSCRIBE_HREF} />
             <ArrowLink href="/">Back to home</ArrowLink>
           </Reveal>
         </div>

@@ -1,51 +1,104 @@
 # probity.bio
 
-Marketing site for Probity. Vite + React + TypeScript, Tailwind v4 and shadcn, with
-ThreeUI (`@designcodeio/threeui`) components rendered directly in React.
+Probity publishes calls on FDA catalysts (advisory committee votes, approval decisions, trial
+readouts) before the date and grades them after. This repo is the site: Vite + React +
+TypeScript, deployed on Vercel's free Hobby tier. It has no database, no paid APIs, and no
+auth. Data lives in `data/` and `content/` as plain files in the repo.
 
 ```bash
-npm install      # also applies patches/ via patch-package
+npm install      # installs dependencies
 npm run dev      # http://localhost:5173
-npm run build    # static output in dist/
+npm run build    # typecheck + static output in dist/
 ```
 
-Deploy `dist/` to any static host. Each page is its own HTML file, so no rewrite rules are needed.
+Pushing to `main` deploys to probity.bio through Vercel's GitHub integration.
 
 ## Pages
 
-| URL | Source | Notes |
+| URL | Source | Reads |
 | --- | --- | --- |
-| `/` | `src/pages/home.tsx` | Hero, problem, how it works, the brief, the standard, pilot |
-| `/about/` | `src/pages/about.tsx` | Reached from the nav and footer only; not part of the home scroll |
-| `/coming-soon/?page=…` | `src/pages/coming-soon.tsx` | Landing page for links that don't exist yet |
+| `/` | `src/pages/home.tsx` | `data/catalyst-calendar.json` (next call, countdown), `data/track-record.json` (scoreboard strip) |
+| `/method/` | `src/pages/method.tsx` | `content/method-v1.0.md` |
+| `/track-record/` | `src/pages/track-record.tsx` | `data/track-record.json` |
+| `/briefs/` | `src/pages/briefs.tsx` | `content/briefs/*.md` |
+| `/coming-soon/?page=…` | `src/pages/coming-soon.tsx` | Placeholder for Privacy, Terms and LinkedIn |
 
-Unpublished pages are listed in `COMING_SOON_PAGES` in `src/lib/site.ts`. To publish one,
-add its page and point the link at the real URL instead of `comingSoon(...)`.
+Each page is its own HTML file (`index.html`, `method/index.html`, …), so no rewrite rules are
+needed.
+
+## Add a brief
+
+1. Write `content/briefs/<slug>.md`. The file name is the URL: `/briefs/?b=<slug>`.
+2. Start it with front matter. These four fields feed the archive list:
+
+   ```markdown
+   ---
+   title: GRAIL Galleri FDA panel vote
+   date: 2026-09-21
+   event: GRAIL Galleri AdCom (PMA vote)
+   verdict: YES, 62%
+   ---
+   ```
+
+   `date` is the publication date (YYYY-MM-DD). The archive sorts newest first.
+3. The rest of the file is the brief in markdown. Tables, lists and links all render.
+4. Commit and push to `main`. The commit time is the brief's public timestamp.
+
+Every brief goes through the /humanizer skill before it's committed.
+
+## Update the track record
+
+Edit `data/track-record.json`. Each event row:
+
+| Field | Before the date | After grading |
+| --- | --- | --- |
+| `our_call` | `null` | `"YES"` or `"NO"` |
+| `probability` | `null` | `62` (or `0.62`) |
+| `outcome` | `"Pending"` | e.g. `"Approved"`, `"Voted no"` |
+| `right` | `null` | `true` or `false` |
+
+The site counts the record (the `0–0`) from the `right` values in the rows. It doesn't read the
+`record` block, so the headline number can't disagree with the table. Keep `record` in step
+anyway, for anything else that reads the file.
+
+## How the countdown picks the next event
+
+The next-call box on the home page reads `data/catalyst-calendar.json`:
+
+1. If `next_featured` is set and its day hasn't ended, it shows that event with that label.
+2. Otherwise it shows the earliest event with `"covered": true` and a confirmed `date`.
+   Events known only by a `window` ("Q4 2026") never drive the countdown.
+
+Days run on US Eastern time, since FDA dates are Eastern. The countdown runs to midnight at the
+start of the event day. On the day itself the box reads "It's today." At midnight Eastern
+after the event it moves to the next one on its own; no deploy is needed.
+
+An automatically picked event is labeled "{company} {product} {FDA panel vote | FDA approval
+decision | trial readout}". For different wording, set `next_featured` to that event's date and
+label.
+
+The calendar has two feeds: `probity scan` writes the AdCom rows, and PDUFA and readout rows are
+added by hand. The site doesn't care which feed wrote a row.
+
+## Email signup
+
+The form posts to Buttondown's public signup endpoint, using the username in
+`src/lib/subscribe.ts` (`BUTTONDOWN_USERNAME`). A username isn't a secret, and no API key ships
+in the site. While the username is empty, the form tells visitors signups open soon and sends
+nothing.
+
+Export the list any time from Buttondown: Subscribers → Export (CSV). Buttondown asks new
+subscribers to confirm by email unless double opt-in is turned off in its settings.
+
+Every "Get the briefs" link points at `SUBSCRIBE_HREF` in `src/lib/site.ts` (currently the form
+on the home page), so a `/subscribe` page can take over later by changing that one value.
 
 ## ThreeUI components
 
-All wired up in `src/components/threeui.tsx`.
+All set up in `src/components/threeui.tsx`.
 
 | Where | Component |
 | --- | --- |
-| Hero background (home, about) | `StructureFlowCollection` — `structure-flow` |
-| Pilot panel, coming-soon background | `ConstellationField` — hue-shifted to the brand blue |
-| Every CTA button | `RectangleButtons` — `lumen-cta` / `lumen-cta-ghost`, restyled in `src/styles/probity.css` |
-| Brief anatomy headings | `TextAnimationCollection` — `article-headings` |
-
-`patches/@designcodeio+threeui+1.2.0.patch` adds `header` and `entries` props to the
-`article-headings` variant, which otherwise only renders its built-in demo text.
-
-`ThreeDPaper` isn't included: 3D Paper appears on threeui.com, but it isn't in the
-published package (0.3.0–1.2.0) or the open-source repository.
-
-## Footer
-
-`npx kibo-ui add footer` fails: Kibo UI's registry has no `footer` component
-(`https://www.kibo-ui.com/r/footer.json` returns an error). The footer is
-`src/components/footer.tsx`.
-
-## Placeholders
-
-- CTAs use `mailto:hello@probity.bio?subject=Pilot%20brief%20request` (`PILOT_MAILTO` in `src/lib/site.ts`).
-- Sample brief, LinkedIn, Privacy and Terms point to `/coming-soon/`.
+| Background on every page | `PredictiveArcCanvas`, `signal-particles` variant |
+| Buttons, including the signup button | `RectangleButtons`, `lumen-cta` / `lumen-cta-ghost`, restyled in `src/styles/probity.css` |
+| Coming soon background | `ConstellationField`, hue-shifted to blue |

@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react'
 import { onHashLinkClick } from '@/lib/scroll'
-import { PILOT_MAILTO } from '@/lib/site'
+import { SUBSCRIBE_HREF } from '@/lib/site'
 
 const LINKS = [
-  { href: '/#how-it-works', label: 'How it works' },
-  { href: '/#the-brief', label: 'The brief' },
-  { href: '/#pilot', label: 'Pilot' },
-  { href: '/about/', label: 'About' },
+  { href: '/method/', label: 'Method' },
+  { href: '/track-record/', label: 'Track record' },
+  { href: '/briefs/', label: 'Briefs' },
 ]
 
 export function Nav() {
@@ -69,8 +68,15 @@ export function Nav() {
               </li>
             ))}
           </ul>
-          <a className="btn btn--primary btn--sm" href={PILOT_MAILTO} onClick={() => setOpen(false)}>
-            Request a brief
+          <a
+            className="btn btn--primary btn--sm"
+            href={SUBSCRIBE_HREF}
+            onClick={(e) => {
+              setOpen(false)
+              onHashLinkClick(e)
+            }}
+          >
+            Get the briefs
           </a>
         </nav>
       </div>

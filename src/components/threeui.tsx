@@ -3,8 +3,6 @@ import { useEffect, useRef, useState } from 'react'
 import { ConstellationField } from '@designcodeio/threeui/components/ConstellationField'
 import { PredictiveArcCanvas } from '@designcodeio/threeui/components/PredictiveArcCanvas'
 import { RectangleButtons } from '@designcodeio/threeui/components/RectangleButtons'
-import { TextAnimationCollection } from '@designcodeio/threeui/components/TextAnimationCollection'
-import { useInView } from '@/hooks/use-in-view'
 import { followHref } from '@/lib/scroll'
 
 /**
@@ -105,33 +103,23 @@ export function CtaButton({ label, href, variant = 'primary' }: CtaButtonProps) 
   )
 }
 
-const ANATOMY = [
-  { index: '01', title: 'Executive summary', meta: 'THE CALL · CONFIDENCE' },
-  { index: '02', title: 'Evidence base', meta: 'EVERY CLAIM CITED' },
-  { index: '03', title: 'Competitive landscape', meta: 'BY STAGE · READOUT' },
-  { index: '04', title: 'Red flags', meta: 'SAFETY · DESIGN · IP' },
-  { index: '05', title: 'Open questions & gaps', meta: 'FOR THE DATA ROOM' },
-] as const
+type SubmitButtonProps = {
+  label: string
+  disabled?: boolean
+}
 
-/** Brief anatomy headings that decode in when scrolled into view. */
-export function BriefAnatomy() {
-  const [ref, inView] = useInView<HTMLDivElement>({ threshold: 0.3 })
+/** The primary Lumen CTA as a form submit button. */
+export function SubmitButton({ label, disabled }: SubmitButtonProps) {
   return (
-    <div ref={ref} className="anatomy-stage">
-      {inView && (
-        <TextAnimationCollection
-          variant="article-headings"
-          mode="light"
-          header={['BRIEF ANATOMY', '05 SECTIONS']}
-          entries={ANATOMY}
-          duration={720}
-          stagger={170}
-          scrambleLength={8}
-          preserveChance={0.35}
-          tailChance={0.12}
-          className="probity-anatomy"
-        />
-      )}
-    </div>
+    <span className="cta-slot">
+      <RectangleButtons
+        variant="lumen-cta"
+        mode="light"
+        type="submit"
+        label={label}
+        disabled={disabled}
+        className="probity-cta probity-cta--primary"
+      />
+    </span>
   )
 }

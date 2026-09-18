@@ -4,13 +4,17 @@ import '@fontsource-variable/inter'
 import './index.css'
 import '@designcodeio/threeui/style.css'
 import './styles/probity.css'
-import { AboutPage } from '@/pages/about'
+import { BriefsPage } from '@/pages/briefs'
 import { ComingSoonPage } from '@/pages/coming-soon'
 import { HomePage } from '@/pages/home'
+import { MethodPage } from '@/pages/method'
+import { TrackRecordPage } from '@/pages/track-record'
 
 const PAGES = {
   home: HomePage,
-  about: AboutPage,
+  method: MethodPage,
+  'track-record': TrackRecordPage,
+  briefs: BriefsPage,
   'coming-soon': ComingSoonPage,
 }
 

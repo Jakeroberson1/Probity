@@ -1,9 +1,12 @@
 export const EMAIL = 'hello@probity.bio'
-export const PILOT_MAILTO = `mailto:${EMAIL}?subject=Pilot%20brief%20request`
+
+/** The signup form on the home page. /subscribe can take over this link later. */
+export const SUBSCRIBE_HREF = '/#subscribe'
+
+export const METHOD_VERSION = 'v1.0'
 
 // Pages linked from the site that aren't published yet all land on /coming-soon/.
 export const COMING_SOON_PAGES = {
-  'sample-brief': 'The sample brief',
   privacy: 'The privacy policy',
   terms: 'The terms of service',
   linkedin: 'Our LinkedIn page',

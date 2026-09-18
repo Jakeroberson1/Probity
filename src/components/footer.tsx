@@ -1,17 +1,14 @@
 import { onHashLinkClick } from '@/lib/scroll'
-import { EMAIL, comingSoon } from '@/lib/site'
+import { EMAIL, SUBSCRIBE_HREF, comingSoon } from '@/lib/site'
 
 const PRIMARY = [
-  { label: 'How it works', href: '/#how-it-works' },
-  { label: 'The brief', href: '/#the-brief' },
-  { label: 'The standard', href: '/#the-standard' },
-  { label: 'Pilot', href: '/#pilot' },
-  { label: 'FAQ', href: '/#faq' },
-  { label: 'About', href: '/about/' },
+  { label: 'Method', href: '/method/' },
+  { label: 'Track record', href: '/track-record/' },
+  { label: 'Briefs', href: '/briefs/' },
+  { label: 'Get the briefs', href: SUBSCRIBE_HREF },
 ]
 
 const SECONDARY = [
-  { label: 'Sample brief', href: comingSoon('sample-brief') },
   { label: 'LinkedIn', href: comingSoon('linkedin') },
   { label: 'Privacy', href: comingSoon('privacy') },
   { label: 'Terms', href: comingSoon('terms') },
@@ -25,7 +22,7 @@ export function Footer() {
         <a className="logo" href="/" aria-label="Probity home">
           PROBITY<span className="logo__dot">.</span>
         </a>
-        <p className="footer__tagline">Know the asset before you bet on it.</p>
+        <p className="footer__tagline">Every FDA catalyst, called before the date.</p>
 
         <nav className="footer__nav" aria-label="Footer">
           <ul className="footer__row">
