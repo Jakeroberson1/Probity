@@ -306,7 +306,7 @@ function Witness({ brief }: { brief: BriefData }) {
       <div className="container">
         <Reveal as="p" className="witness">
           {BRIEF_RECORD.PUBLIC ? (
-            <a href={`${BRIEF_RECORD.repo}/blob/main/briefs/${brief.slug}.md`} rel="noreferrer noopener" target="_blank">
+            <a href={BRIEF_RECORD.historyUrl(brief.slug)} rel="noreferrer noopener" target="_blank">
               {line}
             </a>
           ) : (
@@ -314,7 +314,7 @@ function Witness({ brief }: { brief: BriefData }) {
           )}{' '}
           <span className="witness__note">
             {BRIEF_RECORD.PUBLIC
-              ? 'The commit is the timestamp. Check this page against it.'
+              ? 'The commit is the timestamp. Check it yourself.'
               : 'Committed to the brief record, which opens to the public alongside it.'}
           </span>
         </Reveal>

@@ -9,14 +9,17 @@ export const NEWSLETTER_HREF = 'https://buttondown.com/probity'
 export const METHOD_VERSION = 'v1.0'
 
 /**
- * The public brief record. The repo is private until it's deliberately opened, so the
- * witness line on a brief page names the commit without linking to a 404. Set
- * PUBLIC to true once the repo is public and the links go live.
+ * The public brief record: every brief, committed before its catalyst date.
+ *
+ * The witness line links to a brief's commit history rather than to the file, because the
+ * dates are the point. "Published before the vote" is a claim until a reader can check the
+ * timestamp themselves, and the history page is where they check it.
  */
 export const BRIEF_RECORD = {
-  PUBLIC: false,
+  PUBLIC: true,
   repo: 'https://github.com/Jakeroberson1/probity-briefs',
-  commitUrl: (sha: string) => `https://github.com/Jakeroberson1/probity-briefs/commit/${sha}`,
+  historyUrl: (slug: string) =>
+    `https://github.com/Jakeroberson1/probity-briefs/commits/main/briefs/${slug}.md`,
 } as const
 
 // Pages linked from the site that aren't published yet all land on /coming-soon/.
