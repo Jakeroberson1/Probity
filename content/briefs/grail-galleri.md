@@ -5,7 +5,6 @@ event: "FDA panel vote, Sep 23, 2026"
 verdict: "YES, 65%"
 probability: 65
 method_version: v1.0
-status: published
 ---
 
 > **TL;DR**
@@ -27,34 +26,27 @@ status: published
 
 **The question being called:** Voting Question 3: do the benefits of Galleri outweigh the risks for use in patients who meet the criteria specified in the proposed indication? (The panel also votes separately on safety, Question 1, and effectiveness, Question 2.)
 
-This is a first-of-kind multi-cancer screening PMA with a genuinely mixed evidence picture. The unmet-need case is strong and the false-positive rate is very low, but overall episode sensitivity is modest, performance on cancers that already have screening options is weak, and there's some inter-study variability. FDA's own questions focus almost entirely on that last set of issues (labeling and interpretation, not safety). With no safety alarm from FDA, no direct precedent, and no clear read on the panel, the call leans toward a narrow yes, but without much confidence, capped by the ambiguous FDA tell.
+This is a first-of-kind multi-cancer screening PMA, and the evidence is genuinely mixed. The unmet-need case is strong and the false-positive rate is very low, but overall episode sensitivity is modest, performance on cancers that already have screening options is weak, and there's some inter-study variability. FDA's own questions focus almost entirely on that last set of issues: labeling and interpretation, not safety. With no safety alarm from FDA, no direct precedent, and no clear read on the panel, the call leans toward a narrow yes, but without much confidence, capped by the ambiguous FDA tell.
 
-## Probability
+## How the gates scored
 
-Weighted total: +60, on a scale from -200 to +200.
-
-| Gate | Weight | Score | Points |
-| --- | --- | --- | --- |
-| 1. Efficacy | 25 | Lean Yes (+1) | +25 |
-| 2. Safety | 20 | Lean Yes (+1) | +20 |
-| 3. Precedent | 15 | Toss-up (+0) | +0 |
-| 4. Panel | 10 | Toss-up (+0) | +0 |
-| 5. The tell | 20 | Toss-up (+0) | +0 |
-| 6. Unmet need | 5 | Strong Yes (+2) | +10 |
-| 7. Commercial reality | 5 | Lean Yes (+1) | +5 |
-| **Total** | 100 | | **+60** |
-
-Rules applied:
-
-- Gate 5 is a Toss-up, so the probability is capped at 65% (it would be 69%).
+| Gate | Call |
+| --- | --- |
+| 1. Efficacy | Lean Yes |
+| 2. Safety | Lean Yes |
+| 3. Precedent | Toss-up |
+| 4. Panel | Toss-up |
+| 5. The tell | Toss-up |
+| 6. Unmet need | Strong Yes |
+| 7. Commercial reality | Lean Yes |
 
 Gate 5 was scored first, from the FDA's discussion questions, as the Method requires.
 
-## The 7 gates
+## The evidence
 
 ### Gate 1: Efficacy
 
-**Lean Yes (+1)**, weight 25, +25 points. Does it work?
+**Lean Yes.** Does it work?
 
 - Two large prospective studies (one RCT) both met prespecified success criteria, and overall episode sensitivity of ~32-35% with high specificity is a real, non-trivial signal for a first-in-class screening modality. [S3]
 - Sensitivity is markedly higher for aggressive, currently unscreened cancers (52-61% for the 12 cancers causing two-thirds of US cancer deaths) than for cancers with existing guideline screening (e.g., breast 19-26%, prostate 10.7%), which is the population the sponsor argues matters most. [S3]
@@ -69,7 +61,7 @@ Citations:
 
 ### Gate 2: Safety
 
-**Lean Yes (+1)**, weight 20, +20 points. What are the harms?
+**Lean Yes.** What are the harms?
 
 - False-positive rate is extremely low (0.15%-0.26%) and PPV is high (66-77%), which limits the population-scale harm of unnecessary invasive follow-up that the diagnostics framework flags as the main risk of a screening test. [S3]
 - No device-related serious adverse events were seen across more than 165,000 combined participants, and AEs during diagnostic workup after a positive result were uncommon and mostly non-serious. [S3]
@@ -84,7 +76,7 @@ Citations:
 
 ### Gate 3: Precedent
 
-**Toss-up (+0)**, weight 15, +0 points. What has FDA done before in this situation?
+**Toss-up.** What has FDA done before in this situation?
 
 - FDA's own executive summary states there is no prior FDA-authorized multi-cancer screening device, so there is no direct approval/rejection precedent to anchor a prediction on. [S4]
 - The same panel discussed multi-cancer detection tests generically in 2023 and articulated criteria (detect unscreened cancers, provide tissue-of-origin, high PPV/low false-positive rate, be additive not a replacement), which is soft committee-culture context but not a scored precedent of an actual vote or FDA decision on a comparable product. [S4]
@@ -94,7 +86,7 @@ Citations:
 
 ### Gate 4: Panel
 
-**Toss-up (+0)**, weight 10, +0 points. Who's voting?
+**Toss-up.** Who's voting?
 
 - The temporary voting roster is heavy on oncologists and screening specialists (gynecologic, breast, urologic, colorectal, thoracic) plus three biostatisticians and a patient representative, a mix that could push toward either rigorous scrutiny of surrogate-endpoint methodology or sympathy for unmet-need patients. [S5]
 - A thoracic surgeon on the panel received a conflict-of-interest waiver because he holds equity in and is an officer of a competing (lung-focused) liquid biopsy company, meaning his participation was judged essential despite a modest but limited financial interest in the outcome. [S7]
@@ -107,7 +99,7 @@ Citations:
 
 ### Gate 5: The tell
 
-**Toss-up (+0)**, weight 20, +0 points. What is the FDA worried about?
+**Toss-up.** What is the FDA worried about?
 
 What the FDA's questions show it is worried about:
 
@@ -118,7 +110,7 @@ What the FDA's questions show it is worried about:
 - Whether post-approval studies are needed to fill in benefit-risk gaps not resolved by the 12-month pivotal data.
 
 - FDA's discussion questions are almost entirely about interpreting and labeling efficacy data (episode sensitivity by stage, per cancer type, inter-study variability) rather than about safety, suggesting the agency's core anxiety is over what claim the data can support, not whether the device is dangerous. [S1]
-- FDA explicitly states it has no outstanding safety questions for the panel, a strong signal safety is not the crux of this meeting. [S3]
+- FDA explicitly states it has no outstanding safety questions for the panel, a strong signal that safety is not the crux of this meeting. [S3]
 - FDA frames the 'early detection' question as an either/or ('if no... if yes...'), implying openness to an alternate, narrower indication rather than outright rejection. [S1]
 - The panel is also asked whether cancer-type-specific risk mitigations (labeling warnings/limitations) would suffice, again pointing toward a labeling fix rather than a benefit-risk failure. [S1]
 
@@ -130,7 +122,7 @@ Citations:
 
 ### Gate 6: Unmet need
 
-**Strong Yes (+2)**, weight 5, +10 points. How badly is this wanted?
+**Strong Yes.** How badly is this wanted?
 
 - The sponsor and FDA background materials both emphasize that the large majority of cancer deaths come from cancers without any guideline-recommended screening option, which is exactly the gap Galleri targets. [S4]
 - No FDA-approved or cleared alternative multi-cancer screening device exists. Current single-cancer programs address only a small fraction of incident cancers, so the unmet need is high. [S4]
@@ -142,7 +134,7 @@ Citations:
 
 ### Gate 7: Commercial reality
 
-**Lean Yes (+1)**, weight 5, +5 points. If it wins, does the world change?
+**Lean Yes.** If it wins, does the world change?
 
 - Galleri has been sold as a prescription lab-developed test in the US since 2021, so it already has an established launch and distribution pathway independent of PMA approval. [S3]
 - PMA approval is the mechanism that would open broader payer and Medicare coverage relative to the current out-of-pocket LDT model. That would materially change the commercial opportunity if granted. [S3]
@@ -204,8 +196,8 @@ Captured 2026-09-21 23:24 UTC.
 
 ## Analyst override
 
-None.
+None. The method's scores stand as they came out of the gates.
 
 ---
 
-Probity Method v1.0. Published 2026-09-21 23:49 UTC.
+Probity Method v1.0. Published 2026-09-21 23:49 UTC, before the Sep 23, 2026 FDA panel vote.

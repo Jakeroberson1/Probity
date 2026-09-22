@@ -1,6 +1,8 @@
 import { Layout } from '@/components/layout'
 import { Reveal } from '@/components/reveal'
 import { ArrowLink } from '@/components/section'
+import { BriefPage } from '@/pages/brief-view'
+import { findBriefData } from '@/lib/brief-data'
 import { BRIEFS, briefHref, findBrief, type Brief } from '@/lib/briefs'
 import { nextCall } from '@/lib/catalysts'
 import { formatLongDate, formatMediumDate } from '@/lib/dates'
@@ -10,7 +12,11 @@ import { SUBSCRIBE_HREF } from '@/lib/site'
 /** /briefs/ lists every published brief; /briefs/?b=<slug> shows one. */
 export function BriefsPage() {
   const slug = new URLSearchParams(window.location.search).get('b')
+  // A brief published by the current pipeline has structured data and gets the designed page.
+  // BriefView renders the markdown, which is the fallback for anything published before it.
+  const data = slug ? findBriefData(slug) : undefined
   const brief = slug ? findBrief(slug) : undefined
+  if (data) return <Layout><BriefPage brief={data} /></Layout>
   return <Layout>{brief ? <BriefView brief={brief} /> : <Archive missing={Boolean(slug)} />}</Layout>
 }
 

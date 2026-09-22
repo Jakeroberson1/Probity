@@ -675,3 +675,168 @@ section[id] { scroll-margin-top: var(--nav-h); }
   .brief-row { grid-template-columns: minmax(0, 1fr); grid-template-areas: "date" "title" "event" "verdict"; }
   .brief-row .pill { justify-self: start; margin-top: 6px; }
 }
+
+/* ---------- Brief page ---------- */
+/* The verdict is the design. Everything here is quiet so the number isn't. */
+.brief-hero__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  padding-block: clamp(56px, 8vw, 104px) clamp(40px, 5vw, 64px);
+}
+.brief-hero__eyebrow {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.brief-hero__title {
+  margin-top: 20px;
+  max-width: 22ch;
+  font-size: clamp(30px, 4vw, 46px);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+}
+.brief-verdict {
+  margin-top: clamp(36px, 5vw, 56px);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+.brief-verdict__value {
+  font-size: clamp(64px, 11vw, 132px);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.045em;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+.brief-verdict__label {
+  max-width: 44ch;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--ink-3);
+}
+
+.brief-signup {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.brief-signup--compact {
+  margin-top: clamp(40px, 5vw, 56px);
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+  width: 100%;
+}
+.brief-signup__title { font-size: 18px; font-weight: 700; color: var(--ink); }
+.brief-signup__sub { margin-top: 6px; font-size: 15px; color: var(--ink-3); }
+
+.tldr__title {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.tldr__grid { margin-top: 24px; display: grid; gap: 20px; }
+.tldr__row { display: grid; gap: 6px; }
+@media (min-width: 720px) {
+  .tldr__row { grid-template-columns: 160px minmax(0, 1fr); gap: 24px; align-items: baseline; }
+}
+.tldr__row dt {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.tldr__row dd { margin: 0; font-size: 17px; line-height: 1.6; color: var(--ink-2); }
+.tldr__row dd strong { color: var(--ink); }
+.tldr__question { display: block; margin-top: 6px; font-size: 15px; color: var(--ink-3); }
+
+.tldr__scenarios { margin-top: 32px; padding-top: 28px; border-top: 1px solid var(--line); }
+.tldr__scenarios-title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.tldr__disclaimer { font-size: 12px; font-weight: 500; letter-spacing: 0; text-transform: none; color: var(--ink-3); }
+.scenario-list { margin-top: 16px; display: grid; gap: 14px; }
+.scenario-list li {
+  display: grid;
+  gap: 4px;
+  padding-left: 16px;
+  border-left: 2px solid var(--card-outline);
+}
+.scenario-list__outcome { font-size: 15px; font-weight: 600; color: var(--ink); }
+.scenario-list__implication { font-size: 16px; line-height: 1.6; color: var(--ink-2); }
+
+.evidence__summary-line { font-size: 17px; line-height: 1.7; color: var(--ink-2); }
+.evidence { margin-top: 28px; border-top: 1px solid var(--line); }
+.evidence__toggle {
+  padding-top: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ink);
+  list-style: none;
+}
+.evidence__toggle::-webkit-details-marker { display: none; }
+.evidence__toggle > span:first-child::after { content: ' →'; color: var(--accent); }
+.evidence[open] .evidence__toggle > span:first-child::after { content: ' ↓'; }
+.evidence__meta { font-size: 14px; font-weight: 400; color: var(--ink-3); }
+.evidence__body { margin-top: 28px; }
+.evidence__heading { margin-top: 40px; font-size: 20px; letter-spacing: -0.01em; }
+.evidence__list { margin-top: 14px; display: grid; gap: 10px; padding-left: 1.1em; list-style: disc; }
+.evidence__list li { font-size: 16px; line-height: 1.65; color: var(--ink-2); }
+.evidence__list li::marker { color: var(--accent); }
+.evidence__list a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 3px; }
+.evidence__note { margin-top: 14px; font-size: 16px; color: var(--ink-2); }
+
+.gate-table { width: 100%; border-collapse: collapse; }
+.gate-table th, .gate-table td { padding: 12px 0; border-bottom: 1px solid var(--line); text-align: left; font-size: 15px; }
+.gate-table thead th { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); }
+.gate-table tbody th { font-weight: 600; color: var(--ink); }
+.gate-table td { color: var(--ink-2); }
+.gate-table .pill { margin-left: 10px; }
+
+.gate { margin-top: 40px; }
+.gate__title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 12px;
+  font-size: 19px;
+  letter-spacing: -0.01em;
+}
+.gate__call { font-size: 13px; font-weight: 600; color: var(--accent); }
+.gate__question { margin-top: 6px; font-size: 15px; color: var(--ink-3); }
+.gate__label { margin-top: 16px; font-size: 13px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-3); }
+
+.citations { margin-top: 16px; display: grid; gap: 12px; padding-left: 16px; border-left: 2px solid var(--card-outline); }
+.citations__source { display: block; font-size: 12px; font-weight: 600; letter-spacing: 0.04em; color: var(--ink-3); }
+.citations__quote { display: block; margin-top: 4px; font-size: 15px; line-height: 1.6; color: var(--ink-2); }
+
+.witness { font-size: 15px; color: var(--ink-3); }
+.witness a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 3px; }
+.witness__note { color: var(--ink-3); }
+
+.brief-record { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; }
+.brief-record__line { font-size: 16px; color: var(--ink-2); }
