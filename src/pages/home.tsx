@@ -36,6 +36,9 @@ function Hero() {
         </Reveal>
         <Reveal className="panel call-card" id="subscribe">
           <NextCallPanel />
+          <div className="call-card__calendar">
+            <ArrowLink href="/calendar/">Full calendar</ArrowLink>
+          </div>
           <SubscribeForm />
         </Reveal>
         <Reveal className="hero__scoreboard">

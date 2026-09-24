@@ -16,6 +16,7 @@ const PAGES = [
   { path: '/', changefreq: 'weekly', priority: '1.0' },
   { path: '/track-record/', changefreq: 'weekly', priority: '0.9' },
   { path: '/briefs/', changefreq: 'weekly', priority: '0.9' },
+  { path: '/calendar/', changefreq: 'weekly', priority: '0.9' },
   { path: '/method/', changefreq: 'monthly', priority: '0.5' },
 ]
 

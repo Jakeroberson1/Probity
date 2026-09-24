@@ -20,6 +20,7 @@ export default defineConfig({
         method: path.resolve(__dirname, 'method/index.html'),
         trackRecord: path.resolve(__dirname, 'track-record/index.html'),
         briefs: path.resolve(__dirname, 'briefs/index.html'),
+        calendar: path.resolve(__dirname, 'calendar/index.html'),
         comingSoon: path.resolve(__dirname, 'coming-soon/index.html'),
       },
     },

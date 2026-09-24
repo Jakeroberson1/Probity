@@ -898,3 +898,85 @@ section[id] { scroll-margin-top: var(--nav-h); }
 @media (max-width: 640px) {
   .brief-row__postmortem { margin-left: 0; }
 }
+
+/* ---------- Catalyst calendar ---------- */
+.calendar__month {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.calendar__list { margin-top: 8px; }
+.calendar-row {
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr) auto;
+  grid-template-areas: "when main badges" "when main action";
+  gap: 6px 20px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--line);
+  align-items: start;
+}
+.calendar__list > li:last-child { border-bottom: 0; padding-bottom: 0; }
+.calendar-row--routine { opacity: 0.62; }
+
+.calendar-row__when { grid-area: when; display: flex; flex-direction: column; gap: 3px; }
+.calendar-row__date { font-size: 15px; font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums; }
+.calendar-row__countdown { font-size: 13px; color: var(--ink-3); }
+.calendar-row__flag { font-size: 12px; color: var(--ink-3); font-style: italic; }
+
+.calendar-row__main { grid-area: main; display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.calendar-row__title { font-size: 17px; font-weight: 600; color: var(--ink); }
+.calendar-row__indication { font-size: 15px; color: var(--ink-3); }
+.calendar-row__source { font-size: 13px; color: var(--ink-2); text-decoration: underline; text-decoration-color: var(--card-outline); text-underline-offset: 3px; width: fit-content; }
+.calendar-row__source:hover { text-decoration-color: var(--accent); }
+
+.calendar-row__badges { grid-area: badges; display: flex; align-items: center; gap: 8px; justify-self: end; }
+.calendar-row__routine { font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); }
+.calendar-row__action { grid-area: action; justify-self: end; }
+
+.type-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+/* AdCom blue, PDUFA amber, Readout green, per the calendar spec. */
+.type-badge--adcom { color: #1E4FA3; background: #EEF3FC; border-color: #CBD9F2; }
+.type-badge--pdufa { color: #8A5A00; background: #FDF5E6; border-color: #EEDDB6; }
+.type-badge--readout { color: #1E6B44; background: #EDF7F1; border-color: #C5E3D2; }
+
+.calendar-row__cta {
+  display: inline-block;
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.calendar-row__cta:hover { background: var(--accent); }
+.calendar-row__cta--quiet { background: transparent; color: var(--accent); border: 1px solid var(--card-outline); }
+.calendar-row__cta--quiet:hover { background: #F4F7FD; color: var(--accent); border-color: var(--accent); }
+.calendar-row__result { font-size: 13px; color: var(--ink-2); text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 3px; text-align: right; display: inline-block; max-width: 34ch; }
+.calendar-row__result strong { color: var(--ink); }
+.calendar-row__pending { font-size: 13px; color: var(--ink-3); }
+
+.calendar-row--compact { grid-template-columns: 150px minmax(0, 1fr) auto; grid-template-areas: "when main badges"; padding: 14px 0; align-items: center; }
+
+@media (max-width: 760px) {
+  .calendar-row, .calendar-row--compact {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "when" "main" "badges" "action";
+    gap: 8px;
+  }
+  .calendar-row__badges, .calendar-row__action { justify-self: start; }
+  .calendar-row__result { text-align: left; max-width: none; }
+}
+
+.call-card__calendar { margin-top: 14px; }

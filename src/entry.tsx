@@ -5,6 +5,7 @@ import './index.css'
 import '@designcodeio/threeui/style.css'
 import './styles/probity.css'
 import { BriefsPage } from '@/pages/briefs'
+import { CalendarPage } from '@/pages/calendar'
 import { ComingSoonPage } from '@/pages/coming-soon'
 import { HomePage } from '@/pages/home'
 import { MethodPage } from '@/pages/method'
@@ -15,6 +16,7 @@ const PAGES = {
   method: MethodPage,
   'track-record': TrackRecordPage,
   briefs: BriefsPage,
+  calendar: CalendarPage,
   'coming-soon': ComingSoonPage,
 }
 

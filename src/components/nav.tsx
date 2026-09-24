@@ -4,8 +4,9 @@ import { SUBSCRIBE_HREF } from '@/lib/site'
 
 const LINKS = [
   { href: '/method/', label: 'Method' },
-  { href: '/track-record/', label: 'Track record' },
   { href: '/briefs/', label: 'Briefs' },
+  { href: '/calendar/', label: 'Calendar' },
+  { href: '/track-record/', label: 'Track record' },
 ]
 
 export function Nav() {
