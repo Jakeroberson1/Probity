@@ -1,62 +1,14 @@
-import { useEffect } from 'react'
 import { NextCallPanel } from '@/components/countdown'
 import { Layout } from '@/components/layout'
 import { Reveal } from '@/components/reveal'
 import { ScoreboardStrip } from '@/components/scoreboard'
 import { Accent, ArrowLink } from '@/components/section'
 import { SubscribeForm } from '@/components/subscribe-form'
-import { scrollToId } from '@/lib/scroll'
+import { useHashScroll } from '@/hooks/use-hash-scroll'
 import { METHOD_VERSION } from '@/lib/site'
 
 export function HomePage() {
-  // Arriving from another page with a hash (e.g. /#subscribe): content renders after
-  // the browser's own hash jump, and the web font and lazily loaded ThreeUI
-  // chunks shift layout afterwards. Keep the section aligned while the page
-  // settles, and let go as soon as the visitor scrolls or the window elapses.
-  useEffect(() => {
-    const id = window.location.hash.slice(1)
-    if (!id || !document.getElementById(id)) return
-
-    let frame = 0
-    const align = () => {
-      cancelAnimationFrame(frame)
-      frame = requestAnimationFrame(() => scrollToId(id, 'auto'))
-    }
-    const observer = new ResizeObserver(align)
-    const release = () => {
-      observer.disconnect()
-      cancelAnimationFrame(frame)
-      window.removeEventListener('wheel', release)
-      window.removeEventListener('touchstart', release)
-      window.removeEventListener('keydown', release)
-    }
-    observer.observe(document.body)
-    window.addEventListener('wheel', release, { passive: true })
-    window.addEventListener('touchstart', release, { passive: true })
-    window.addEventListener('keydown', release)
-    const timer = window.setTimeout(release, 2500)
-    align()
-
-    return () => {
-      window.clearTimeout(timer)
-      release()
-    }
-  }, [])
-
-  // Hash changes within the page (typed URLs, Back/Forward over pushState entries).
-  useEffect(() => {
-    const onHash = () => {
-      const id = window.location.hash.slice(1)
-      if (id) scrollToId(id)
-      else window.scrollTo({ top: 0, behavior: 'auto' })
-    }
-    window.addEventListener('hashchange', onHash)
-    window.addEventListener('popstate', onHash)
-    return () => {
-      window.removeEventListener('hashchange', onHash)
-      window.removeEventListener('popstate', onHash)
-    }
-  }, [])
+  useHashScroll()
 
   return (
     <Layout>

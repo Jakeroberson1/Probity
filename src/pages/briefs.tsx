@@ -1,8 +1,9 @@
 import { Layout } from '@/components/layout'
+import { useHashScroll } from '@/hooks/use-hash-scroll'
 import { Reveal } from '@/components/reveal'
 import { ArrowLink } from '@/components/section'
 import { BriefPage } from '@/pages/brief-view'
-import { findBriefData } from '@/lib/brief-data'
+import { findBriefData, hasPostMortem } from '@/lib/brief-data'
 import { BRIEFS, briefHref, findBrief, type Brief } from '@/lib/briefs'
 import { nextCall } from '@/lib/catalysts'
 import { formatLongDate, formatMediumDate } from '@/lib/dates'
@@ -11,6 +12,9 @@ import { SUBSCRIBE_HREF } from '@/lib/site'
 
 /** /briefs/ lists every published brief; /briefs/?b=<slug> shows one. */
 export function BriefsPage() {
+  // Linking straight to a brief's post-mortem section only works if the page re-aligns
+  // after it renders; the browser's own hash jump happens before there is anything there.
+  useHashScroll()
   const slug = new URLSearchParams(window.location.search).get('b')
   // A brief published by the current pipeline has structured data and gets the designed page.
   // BriefView renders the markdown, which is the fallback for anything published before it.
@@ -61,6 +65,13 @@ function Archive({ missing }: { missing: boolean }) {
                       <span className="brief-row__event">{b.event}</span>
                       {b.verdict && <span className="pill">{b.verdict}</span>}
                     </a>
+                    {/* Sibling of the row's link rather than inside it: a link inside a link is
+                        invalid, and this one goes to a section of the same page anyway. */}
+                    {hasPostMortem(b.slug) && (
+                      <a className="brief-row__postmortem" href={`${briefHref(b.slug)}#postmortem`}>
+                        Post-mortem
+                      </a>
+                    )}
                   </li>
                 ))}
               </ol>

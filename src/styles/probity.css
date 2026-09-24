@@ -879,3 +879,22 @@ section[id] { scroll-margin-top: var(--nav-h); }
   text-underline-offset: 3px;
 }
 .record-table__link:hover { color: var(--ink); }
+
+/* A post-mortem is part of its brief's page, so this is a jump link, not a separate entry. */
+.brief-row__postmortem {
+  display: inline-block;
+  margin: -6px 0 18px 140px;
+  padding: 4px 12px;
+  border: 1px solid var(--card-outline);
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  background: #F4F7FD;
+}
+.brief-row__postmortem:hover { border-color: var(--accent); }
+.brief-list li:last-child .brief-row { padding-bottom: 12px; border-bottom: 0; }
+@media (max-width: 640px) {
+  .brief-row__postmortem { margin-left: 0; }
+}

@@ -30,6 +30,9 @@ function parse(raw: string): { meta: Record<string, string>; body: string } {
 }
 
 export const BRIEFS: Brief[] = Object.entries(FILES)
+  // <slug>.postmortem.md sits beside its brief and is part of that brief's page, not a brief
+  // of its own. Without this it lists itself in the archive at /briefs/?b=<slug>.postmortem.
+  .filter(([path]) => !path.endsWith('.postmortem.md'))
   .map(([path, raw]) => {
     const { meta, body } = parse(raw)
     const slug = path.split('/').pop()!.replace(/\.md$/, '')
