@@ -16,6 +16,8 @@ Safety was never the friction. FDA had no outstanding safety questions, and Q1 w
 
 ## What we got wrong
 
-The miss list is short. The direction was right at 65%, the panel voted yes on all three questions, and the crux we named is where the discussion went. "A narrow yes without much confidence" is a fair description of a 6-4 on effectiveness and a 7-2 with an abstention.
+The crowd read it better than we did. Consensus was 72.5% and we published 65%, the same side of the call with a worse number: their Brier score was 0.0756 against our 0.1225. Sitting below consensus felt like discipline at the time. On this call it cost us accuracy, and that goes on the record.
+
+Past that, the miss list is short. The direction was right at 65%, the panel voted yes on all three questions, and the crux we named is where the discussion went. "A narrow yes without much confidence" is a fair description of a 6-4 on effectiveness and a 7-2 with an abstention.
 
 Two notes for next time. The vote landed between our first two scenarios, a yes but contested on the label, which is the middle scenario's territory rather than the clean win. When FDA's questions point at labeling this hard, the contested-label path deserves more weight. And we don't model abstentions. One member abstained on the deciding question, which is normal for these panels and is not in the method. It's logged, and one case doesn't change it.
