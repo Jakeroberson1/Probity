@@ -1,5 +1,6 @@
 import calendar from '../../data/catalyst-calendar.json'
 import { DAY_MS, startOfDayET } from '@/lib/dates'
+import { EVENTS as SCORED } from '@/lib/track-record'
 
 export type CatalystType = 'adcom' | 'pdufa' | 'readout'
 
@@ -69,15 +70,20 @@ function toNextCall(date: string, label: string, briefName: string): NextCall {
  * only by a window ("Q4 2026") never drive the countdown.
  */
 export function nextCall(now: number = Date.now()): NextCall | null {
+  // A vote that has already been graded is not the next call, even for the rest of its own
+  // day. The outcome is on the track record; counting down to it reads as not paying attention.
+  const graded = new Set(SCORED.filter((e) => e.right !== null).map((e) => e.date))
+
   const upcoming = CALENDAR.events
     .filter((e): e is Catalyst & { date: string } => e.covered && !e.cancelled && e.date !== null)
-    .filter((e) => startOfDayET(e.date) + DAY_MS > now)
+    .filter((e) => startOfDayET(e.date) + DAY_MS > now && !graded.has(e.date))
     .sort((a, b) => a.date.localeCompare(b.date))
 
   // A featured event that has since been cancelled gives way to the next real one.
   const featured = CALENDAR.next_featured
   const featuredCancelled = CALENDAR.events.some((e) => e.date === featured?.date && e.cancelled)
-  if (featured && !featuredCancelled && startOfDayET(featured.date) + DAY_MS > now) {
+  if (featured && !featuredCancelled && !graded.has(featured.date) &&
+      startOfDayET(featured.date) + DAY_MS > now) {
     const match = upcoming.find((e) => e.date === featured.date)
     return toNextCall(featured.date, featured.label, match ? shortCompany(match.company) : featured.label)
   }

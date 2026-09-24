@@ -60,6 +60,10 @@ const BY_SLUG: Record<string, BriefData> = Object.fromEntries(
 
 export const findBriefData = (slug: string): BriefData | undefined => BY_SLUG[slug]
 
+/** The published brief for a catalyst date, so a track-record row can link to its brief. */
+export const briefForDate = (date: string): BriefData | undefined =>
+  Object.values(BY_SLUG).find((b) => b.event.catalyst_date === date)
+
 /**
  * Probity's probability minus the crowd's, in points. Positive means Probity is more
  * confident in YES than the crowd was; the sign is what makes a call worth publishing.

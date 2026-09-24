@@ -840,3 +840,17 @@ section[id] { scroll-margin-top: var(--nav-h); }
 
 .brief-record { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; }
 .brief-record__line { font-size: 16px; color: var(--ink-2); }
+
+.brief-result {
+  margin-top: 28px;
+  padding: 14px 18px;
+  border: 1px solid var(--card-outline);
+  border-left: 3px solid var(--ink-3);
+  border-radius: 6px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink-2);
+  background: #F7F9FC;
+}
+.brief-result--right { border-left-color: var(--accent); }
+.brief-result strong { color: var(--ink); }

@@ -5,7 +5,7 @@ import type { BriefData, BriefGate } from '@/lib/brief-data'
 import { edgePoints } from '@/lib/brief-data'
 import { formatLongDate, formatMediumDate } from '@/lib/dates'
 import { BRIEF_RECORD, NEWSLETTER_HREF } from '@/lib/site'
-import { nextPending, recordCounts } from '@/lib/track-record'
+import { EVENTS, nextPending, recordCounts } from '@/lib/track-record'
 
 /**
  * A published brief. The verdict is the design: everything above the fold is the call, the
@@ -36,6 +36,22 @@ function headline(brief: BriefData): string {
   return brief.title.endsWith(suffix) ? brief.title.slice(0, -suffix.length) : brief.title
 }
 
+/**
+ * The graded result, once there is one. It is read from the track record rather than written
+ * into the brief: the brief is what was published before the vote, and editing it afterwards
+ * would make the timestamp on it worthless.
+ */
+function Result({ brief }: { brief: BriefData }) {
+  const row = EVENTS.find((e) => e.date === brief.event.catalyst_date && e.right !== null)
+  if (!row) return null
+  return (
+    <Reveal as="p" className={row.right ? 'brief-result brief-result--right' : 'brief-result'}>
+      <strong>{row.right ? 'Called right.' : 'Called wrong.'}</strong> {row.outcome}. The brief below
+      is unchanged from what was published before the vote.
+    </Reveal>
+  )
+}
+
 function BriefHero({ brief }: { brief: BriefData }) {
   return (
     <section className="hero brief-hero" aria-labelledby="brief-title">
@@ -54,6 +70,7 @@ function BriefHero({ brief }: { brief: BriefData }) {
             probability of a yes vote{brief.event.committee ? `, ${brief.event.committee}` : ''}
           </span>
         </Reveal>
+        <Result brief={brief} />
         <Signup
           id="brief-signup-head"
           title="A brief before every FDA catalyst."

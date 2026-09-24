@@ -1,6 +1,10 @@
+import { ArrowLink } from '@/components/section'
 import { useNow } from '@/hooks/use-now'
+import { briefForDate } from '@/lib/brief-data'
+import { briefHref } from '@/lib/briefs'
 import { nextCall } from '@/lib/catalysts'
 import { formatLongDate } from '@/lib/dates'
+import { EVENTS, formatProbability } from '@/lib/track-record'
 
 const UNITS = [
   ['days', 86_400_000],
@@ -24,10 +28,25 @@ export function NextCallPanel() {
   const call = nextCall(now)
 
   if (!call) {
+    // Nothing on the calendar yet. The last graded call is more use to a reader than an
+    // apology about scheduling, and it is the thing the whole site is arguing about.
+    const last = [...EVENTS].reverse().find((e) => e.right !== null)
+    const brief = last ? briefForDate(last.date) : undefined
     return (
       <div className="next-call">
-        <p className="eyebrow">Next call</p>
-        <p className="next-call__title">The next date isn't set yet.</p>
+        <p className="eyebrow">{last ? 'Last call' : 'Next call'}</p>
+        {last ? (
+          <>
+            <p className="next-call__title">{last.event}</p>
+            <p className="next-call__date">
+              Called {last.our_call} at {formatProbability(last.probability)}. {last.outcome}.
+            </p>
+            <p className="next-call__today">{last.right ? 'Right.' : 'Wrong.'}</p>
+            {brief && <ArrowLink href={briefHref(brief.slug)}>Read the brief</ArrowLink>}
+          </>
+        ) : (
+          <p className="next-call__title">The next date isn't set yet.</p>
+        )}
       </div>
     )
   }
