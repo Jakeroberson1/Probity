@@ -1,0 +1,68 @@
+# Probity publishes FDA catalyst calls before the date and grades them in public.
+# The whole point is that the record can be read and checked, by people and by machines.
+# Everything here is open to crawl, including for AI training and retrieval.
+
+User-agent: *
+Allow: /
+
+# Named explicitly so there is no ambiguity, and so a future default-deny can't
+# quietly shut these out. Search and answer engines:
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+# AI assistants and their retrieval crawlers:
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+# Training-use opt-ins. These tokens control whether content is used to train models,
+# separately from whether it is crawled. Probity opts in: a brief that shows up inside an
+# assistant's answer is a brief doing its job.
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+Sitemap: https://probity.bio/sitemap.xml

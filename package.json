@@ -5,10 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "node scripts/sitemap.mjs && tsc -b && vite build",
     "lint": "oxlint",
     "preview": "vite preview",
-    "postinstall": "patch-package"
+    "postinstall": "patch-package",
+    "sitemap": "node scripts/sitemap.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.8.0",
