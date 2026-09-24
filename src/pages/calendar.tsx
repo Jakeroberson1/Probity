@@ -15,7 +15,6 @@ import {
 } from '@/lib/catalysts'
 import { formatMediumDate } from '@/lib/dates'
 import { EVENTS as SCORED, formatProbability, type ScoredEvent } from '@/lib/track-record'
-import { SUBSCRIBE_HREF } from '@/lib/site'
 
 /**
  * Every FDA catalyst we're tracking, in date order. Rows that already have a brief link to it,
@@ -201,11 +200,7 @@ function CatalystRow({ row, now }: { row: Row; now: number }) {
           </a>
         ) : past ? (
           <span className="calendar-row__pending">Grading</span>
-        ) : routine ? null : (
-          <a className="calendar-row__cta calendar-row__cta--quiet" href={SUBSCRIBE_HREF}>
-            Get the brief free
-          </a>
-        )}
+        ) : null}
       </span>
     </li>
   )
