@@ -8,6 +8,15 @@ const FILES = import.meta.glob('../../content/briefs/*.json', {
   eager: true,
 }) as Record<string, BriefData>
 
+// Post-mortems are written after a call is graded and live beside the brief they grade:
+// content/briefs/<slug>.postmortem.md. The brief itself is never edited after publication,
+// so the grading notes have to be a separate file.
+const POSTMORTEMS = import.meta.glob('../../content/briefs/*.postmortem.md', {
+  query: '?raw',
+  import: 'default',
+  eager: true,
+}) as Record<string, string>
+
 export type Citation = { source: string; locator: string | null; quote: string }
 
 export type BriefGate = {
@@ -59,6 +68,15 @@ const BY_SLUG: Record<string, BriefData> = Object.fromEntries(
 )
 
 export const findBriefData = (slug: string): BriefData | undefined => BY_SLUG[slug]
+
+/** The post-mortem markdown for a brief, once it has been graded and one has been written. */
+export function findPostMortem(slug: string): string | undefined {
+  const entry = Object.entries(POSTMORTEMS).find(([path]) => path.endsWith(`/${slug}.postmortem.md`))
+  return entry?.[1]
+}
+
+/** Whether a graded call has a post-mortem, so the track record can link to it. */
+export const hasPostMortem = (slug: string): boolean => findPostMortem(slug) !== undefined
 
 /** The published brief for a catalyst date, so a track-record row can link to its brief. */
 export const briefForDate = (date: string): BriefData | undefined =>

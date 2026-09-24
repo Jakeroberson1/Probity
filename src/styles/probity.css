@@ -854,3 +854,28 @@ section[id] { scroll-margin-top: var(--nav-h); }
 }
 .brief-result--right { border-left-color: var(--accent); }
 .brief-result strong { color: var(--ink); }
+
+/* ---------- Post-mortem ---------- */
+.postmortem__eyebrow {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.postmortem__title { margin-top: 8px; font-size: clamp(24px, 3vw, 32px); letter-spacing: -0.02em; }
+.postmortem__body { margin-top: 24px; }
+.postmortem__body > div > h2:first-child { margin-top: 0; }
+.postmortem__body em { color: var(--ink-3); }
+.record-table__link {
+  display: block;
+  margin-top: 6px;
+  white-space: nowrap;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink-2);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-underline-offset: 3px;
+}
+.record-table__link:hover { color: var(--ink); }

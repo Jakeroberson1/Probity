@@ -1,9 +1,21 @@
 import { Layout } from '@/components/layout'
 import { Reveal } from '@/components/reveal'
 import { formatMediumDate, formatShortDate } from '@/lib/dates'
+import { briefForDate, hasPostMortem } from '@/lib/brief-data'
+import { briefHref } from '@/lib/briefs'
 import { EVENTS, formatProbability, nextPending, recordCounts } from '@/lib/track-record'
 
 const yesNo = (value: boolean | null) => (value === null ? '—' : value ? 'Yes' : 'No')
+
+function PostMortemLink({ date }: { date: string }) {
+  const brief = briefForDate(date)
+  if (!brief || !hasPostMortem(brief.slug)) return null
+  return (
+    <a className="record-table__link" href={`${briefHref(brief.slug)}#postmortem`}>
+      Read the post-mortem
+    </a>
+  )
+}
 
 export function TrackRecordPage() {
   const { right, wrong, scored } = recordCounts()
@@ -52,7 +64,12 @@ export function TrackRecordPage() {
                       <td className="record-table__date">
                         <time dateTime={e.date}>{formatMediumDate(e.date)}</time>
                       </td>
-                      <th scope="row">{e.event}</th>
+                      <th scope="row">
+                        {e.event}
+                        {/* The grading notes live with the brief they grade rather than in this
+                            table, so the scoreboard stays a scoreboard. */}
+                        <PostMortemLink date={e.date} />
+                      </th>
                       <td>{e.committee}</td>
                       <td>{e.our_call ?? '—'}</td>
                       <td>{formatProbability(e.probability)}</td>

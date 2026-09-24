@@ -2,7 +2,8 @@ import { Reveal } from '@/components/reveal'
 import { ArrowLink } from '@/components/section'
 import { CtaButton } from '@/components/threeui'
 import type { BriefData, BriefGate } from '@/lib/brief-data'
-import { edgePoints } from '@/lib/brief-data'
+import { edgePoints, findPostMortem } from '@/lib/brief-data'
+import { renderMarkdown } from '@/lib/markdown'
 import { formatLongDate, formatMediumDate } from '@/lib/dates'
 import { BRIEF_RECORD, NEWSLETTER_HREF } from '@/lib/site'
 import { EVENTS, nextPending, recordCounts } from '@/lib/track-record'
@@ -19,6 +20,7 @@ export function BriefPage({ brief }: { brief: BriefData }) {
       <BriefHero brief={brief} />
       <TldrBox brief={brief} />
       <Evidence brief={brief} />
+      <PostMortem brief={brief} />
       <Witness brief={brief} />
       <TrackRecordStrip />
       <Signup
@@ -311,6 +313,33 @@ function GateDetail({ gate }: { gate: BriefGate }) {
         </ul>
       )}
     </div>
+  )
+}
+
+/**
+ * What the call got right and wrong, written after grading. It sits below the brief and is
+ * marked as written afterwards, so a reader can tell at a glance which parts of this page
+ * predate the vote and which do not.
+ */
+function PostMortem({ brief }: { brief: BriefData }) {
+  const source = findPostMortem(brief.slug)
+  if (!source) return null
+  // Drop the file's own H1: the section already has a heading, and two is noise.
+  const body = source.replace(/^#\s+.*\n+/, '')
+  return (
+    <section className="section section--tight" aria-labelledby="postmortem-title" id="postmortem">
+      <div className="container">
+        <Reveal className="panel">
+          <p className="postmortem__eyebrow">Written after the vote</p>
+          <h2 className="postmortem__title" id="postmortem-title">
+            Post-mortem
+          </h2>
+          <div className="prose postmortem__body">
+            <div dangerouslySetInnerHTML={{ __html: renderMarkdown(body) }} />
+          </div>
+        </Reveal>
+      </div>
+    </section>
   )
 }
 
